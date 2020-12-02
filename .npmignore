@@ -3,3 +3,6 @@ webpack.config/
 webpack.config.js
 src/plugins/
 src/debug/
+dist/doc/
+.upload
+dist/plugins/
