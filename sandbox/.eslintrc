@@ -1,0 +1,11 @@
+{
+  "globals": {
+    "process": false,
+    "ExcelAPI": false
+  },
+  "rules": {
+    "no-unused-vars": 0,
+    "no-eval": 0,
+    "no-console": 0
+  }
+}

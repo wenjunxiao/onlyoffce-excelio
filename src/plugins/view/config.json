@@ -1,0 +1,22 @@
+{
+  "name": "${process.env.VIEW_NAME}",
+  "guid": "${process.env.VIEW_GUID}",
+
+  "variations": [{
+      "description": "${process.env.VIEW_NAME}",
+      "url": "index.html",
+      "icons": ["icon.png", "icon@2x.png"],
+      "isViewer": true,
+      "EditorsSupport": ["cell"],
+      "isDisplayedInViewer": false,
+      "isVisual": true,
+      "isModal": false,
+      "isInsideMode": true,
+      "initDataType": "text",
+      "initData": "",
+      "isUpdateOleOnResize": false,
+      "buttons": [],
+      "initOnSelectionChanged": false
+    }
+  ]
+}

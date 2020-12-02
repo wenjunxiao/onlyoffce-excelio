@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Sample</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <script>
+    window.extensionParams = {
+      url: '<%= htmlWebpackPlugin.options.onlyoffice_web_apps %>',
+      pluginBase: '<%= htmlWebpackPlugin.options.pluginBase %>'
+    };
+    if (!(/^http/.test(window.extensionParams.pluginBase))) {
+      window.extensionParams.pluginBase = location.protocol + '//' + location.host + window.extensionParams.pluginBase
+    }
+  </script>
+  <script src="protocol//url/of/onlyoffice/api.js"></script>
+  <script src="protocol//url/of/plugins/api.js"></script>
+  <script type="text/javascript">
+    window.onload = function () {
+      let docEditor = ExcelAPI.createEditor('placeholder', {
+        document: {
+          title: 'sample.xlsx',
+          url: 'protocol//url/of/sample.xlsx'
+        },
+        editorConfig: {
+          mode: 'edit', // 'view' or 'edit'
+          user: {
+            id: "sample",
+            name: "Mr Sample"
+          }
+        }
+      });
+      docEditor.on('PluginOpen', async (e) => {
+        const services = {
+          postService(data) {
+            return new Promise((resolve, reject) => {
+              let xhr = new XMLHttpRequest();
+              xhr.open('post', '/app/api/sample');
+              xhr.onerror = reject;
+              xhr.onload = () => resolve(JSON.parse(xhr.responseText));
+              xhr.send(JSON.stringify(data));
+            });
+          }
+        };
+        await e.target.renderPlugin({
+          template: `<textarea type="text" id="data" style="width:98%;"></textarea>
+            <button onclick="doCommit(this)">Commit</button>
+            <textarea type="text" id="result" style="width:98%;"></textarea>`,
+          methods: {
+            doCommit(that) {
+              let data = JSON.parse(document.getElementById('data').value || '{}');
+              services.postService(data).then(rsp => {
+                if (rsp.success) {
+                  document.getElementById('result').value = '成功:' + JSON.stringify(rsp);
+                } else {
+                  document.getElementById('result').value = '失败:' + JSON.stringify(rsp);
+                }
+              }).catch(err => {
+                document.getElementById('result').value = '异常:' + err.message;
+              });
+            }
+          },
+          services
+        })
+      });
+    };
+  </script>
+</head>
+
+<body>
+  <div style="position: absolute; right: 100px; top: 0;">
+    <a href="sandbox/sample.html" target="_blank">Source Code</a>
+  </div>
+  <div id="placeholder"></div>
+</body>
+
+</html>

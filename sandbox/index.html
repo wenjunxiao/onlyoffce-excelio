@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="Cache-Control" content="no-cache,no-store">
+  <meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="0">
+  <title>
+    OnlyOffice ExcelIO Sandbox
+  </title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 30px;
+      vertical-align: bottom;
+      text-align: center;
+      pointer-events: none;
+      z-index: 99;
+    }
+
+    .header .nav {
+      height: 100%;
+      line-height: 30px;
+      pointer-events: visiblePainted;
+      padding-left: 10px;
+      padding-right: 10px;
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+
+    .header .nav a {
+      margin: 8px;
+    }
+
+    .content {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .content>div {
+      display: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    #home h1 {
+      text-align: center;
+      padding-top: 50px;
+    }
+  </style>
+  <script type="text/javascript">
+    if (typeof Object.assign != 'function') {
+      Object.assign = function (target) {
+        'use strict';
+        if (target == null) {
+          throw new TypeError('Cannot convert undefined or null to object');
+        }
+        target = Object(target);
+        for (var index = 1; index < arguments.length; index++) {
+          var source = arguments[index];
+          if (source != null) {
+            for (var key in source) {
+              if (Object.prototype.hasOwnProperty.call(source, key)) {
+                target[key] = source[key];
+              }
+            }
+          }
+        }
+        return target;
+      };
+    }
+
+    function openSouce() {
+      if (location.router && location.router !== 'home') {
+        window.open('sandbox/' + location.router + '.js', '_blank');
+      } else {
+        window.open('sandbox/index.js', '_blank');
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div class="header">
+    <div class="nav">
+      <a href="#home">首页</a>
+      <a href="#example?mode=edit">编辑</a>
+      <a href="#example?mode=view">预览</a>
+      <a href="#command">命令测试</a>
+      <a href="#save?autosave=false">文件存储</a>
+      <a href="#scripts">外部脚本</a>
+      <a href="sample.html" target="_blank">Sample</a>
+      <a href="doc/index.html" target="_blank">帮助文档</a>
+      <a href="javascript:void(0)" onclick="openSouce()">Source Code</a>
+    </div>
+  </div>
+  <!-- <div style="position: absolute; right: 100px; top: 0; z-index: 100;">
+    <a href="javascript:void(0)" onclick="openSouce()">Source Code</a>
+  </div> -->
+  <div class="content">
+    <div id="placeholder"></div>
+    <div id="home">
+      <h1>OnlyOffice ExcelIO Sadnbox Home</h1>
+      <dl style="padding-left: 30px;">
+        <dt>
+          <h3>编辑</h3>
+        </dt>
+        <dd>以可编辑模式打开OnlyOffice，已经安装插件，可以在插件界面执行ExceIO的代码，并附带执行例子。可以通过Source Code查看代码</dd>
+        <dt>
+          <h3>预览</h3>
+        </dt>
+        <dd>以可预览模式打开OnlyOffice，已经安装插件，可以在后台执行ExcelIO的代码</dd>
+        <dt>
+          <h3>命令测试</h3>
+        </dt>
+        <dd>打开OnlyOffice，已经安装插件，可以在插件界面执行OnlyOffice的命令代码，并附带例子。可以通过Source Code查看代码</dd>
+        <dt>
+          <h3>Sample</h3>
+        </dt>
+        <dd>简单使用ExcelAPI的例子，可以通过提交<code>{"statusCode":200,"success":true}</code>
+          数据，修改其中的值可以模拟各种调用接口的状态和API返回成功。可以通过Source Code查看源码</dd>
+        <dt>
+          <h3>帮助文件</h3>
+        </dt>
+        <dd>包含API的说明文档及其示例</dd>
+        <dt>
+          <h3>Source Code</h3>
+        </dt>
+        <dd>可以查看当前所在路由页面的源码，源码中涉及到的服务接口的<a href="webpack.config/dev.js#before" target="_blank">实现源码</a></dd>
+      </dl>
+    </div>
+  </div>
+</body>
+
+</html>

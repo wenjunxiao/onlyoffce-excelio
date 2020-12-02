@@ -1,0 +1,12 @@
+{
+  "globals": {
+    "Api": false,
+    "Asc": false,
+    "process": true
+  },
+  "rules": {
+    "no-unused-vars": 0,
+    "no-eval": 0,
+    "no-console": 0
+  }
+}

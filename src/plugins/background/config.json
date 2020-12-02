@@ -1,0 +1,19 @@
+{
+  "name": "${process.env.BACKGROUND_NAME}",
+  "guid": "${process.env.BACKGROUND_GUID}",
+
+  "variations": [{
+    "url": "index.html",
+    "description": "${process.env.BACKGROUND_NAME}",
+    "icons": ["icon.png", "icon@2x.png"],
+    "isViewer": true,
+    "EditorsSupport": ["word", "cell", "slide"],
+    "isVisual": false,
+    "isModal": false,
+    "isInsideMode": false,
+    "initDataType": "none",
+    "initData": "",
+    "buttons": [],
+    "isSystem": true
+  }]
+}

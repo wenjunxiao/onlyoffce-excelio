@@ -1,0 +1,68 @@
+{
+  "name": "onlyoffce-excelio",
+  "version": "1.0.0",
+  "description": "ExcelIO for OnlyOffice",
+  "main": "dist/excel/excelio.js",
+  "module": "src/excel/index.js",
+  "plugins": {
+    "background": {
+      "guid": "asc.{78070C3C-7084-431A-BFB0-85611140332D}"
+    },
+    "view": {
+      "name": "ExcelIO",
+      "guid": "asc.{448BC187-B29C-41B2-AA54-E4C5D0C409AB}"
+    }
+  },
+  "scripts": {
+    "doc": "rm -rf ./dist/doc && node -r ./tools/polyfill.js ./node_modules/.bin/jsdoc --verbose -d ./dist/doc -r ./src -c ./.jsdoc.json -R ./README.md",
+    "build": "NODE_ENV=production webpack --env build",
+    "debug": "NODE_ENV=debug webpack --env build",
+    "dev": "npm run doc && NODE_ENV=debug webpack-dev-server --env dev",
+    "build-sandbox": "rm -rf ./dist/* && NODE_ENV=production BUILD_SANDBOX=true webpack --env build --mode production",
+    "local": "npm run doc && NODE_ENV=debug DYNAMIC_ICON=true webpack-dev-server --env dev --onlyoffice http://127.0.0.1:5180/web-apps/apps/api/documents/api.js"
+  },
+  "keywords": [],
+  "author": "Wenjun Xiao",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wenjunxiao/onlyoffce-excelio.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wenjunxiao/onlyoffce-excelio/issues"
+  },
+  "homepage": "https://github.com/wenjunxiao/onlyoffce-excelio#readme",
+  "engines": {
+    "node": ">= 6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/polyfill": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/register": "^7.9.0",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.0.6",
+    "comment-json": "^3.0.2",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.4.2",
+    "eslint": "^6.8.0",
+    "eslint-loader": "^3.0.3",
+    "file-loader": "^6.0.0",
+    "fs-copy-file-sync": "^1.1.1",
+    "html-webpack-plugin": "^3.2.0",
+    "jsdoc": "^3.6.3",
+    "json-loader": "^0.5.7",
+    "loader-utils": "^2.0.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-excelio": "^1.0.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "uglify-es": "^3.3.9",
+    "uuid": "^7.0.2",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
+}

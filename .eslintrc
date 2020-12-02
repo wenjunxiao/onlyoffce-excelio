@@ -1,0 +1,26 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": "eslint:recommended",
+  "parser": "babel-eslint",
+  "globals": {
+    "document": false,
+    "escape": false,
+    "navigator": false,
+    "unescape": false,
+    "window": false
+  },
+  "rules": {
+    "strict": [
+      "error",
+      "global"
+    ],
+    "no-unused-vars": 1,
+    "eqeqeq": 1,
+    "no-eval": 2,
+    "no-magic-numbers": 0,
+    "no-console": 1
+  }
+}
